@@ -1,3 +1,7 @@
 Welcome to unfavoriter !
 
-<a href = "/auth">Authorize</a>
+<% if @user.nil? %>
+	<a href = "/auth">Authorize</a>
+<% else %>
+	<p> Welcome <%= @user %> </p>
+<% end %>
