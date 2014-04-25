@@ -84,7 +84,7 @@ get '/auth_callback' do
 	client = https_client
 
 
-	auth_request = Net::HTTP.Post.new(URI("https://api.twitter.com/oauth/access_token"))
+	auth_request = Net::HTTP::Post.new(URI("https://api.twitter.com/oauth/access_token"))
 	auth_request.body = "oauth_verifier=" + session[:oauth][:oauth_verifier].to_s
 	auth_request["Authorization"] = oauth("POST", "oauth/access_token",oauth_details({:token => session[:oauth][:oauth_token],:token_secret => session[:oauth][:oauth_token_secret]}))
 	
