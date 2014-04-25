@@ -1,4 +1,7 @@
+configure do
 
+	enable :sessions
+end
 
 helpers do 
 
@@ -40,6 +43,10 @@ get '/' do
 	end
 	erb :index
 
+end
+
+get '/as' do
+	puts params[:taku]
 end
 
 
