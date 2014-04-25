@@ -50,7 +50,7 @@ get '/auth' do
 
 	auth_request = Net::HTTP::Post.new(URI("https://api.twitter.com/oauth/request_token"))
 	auth_request["Authorization"] = oauth("POST", "oauth/request_token", oauth_details({
-		:callback => "http%3A%2F%2Fpolar-wave-5903.herokuapp.com%2Fauth_callback"
+		:callback => "http://polar-wave-5903.herokuapp.com/auth_callback"
 	}))
 	
 	client = https_client
