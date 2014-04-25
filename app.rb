@@ -59,6 +59,7 @@ get '/auth' do
 	redirect to('/failure') if auth_response.code.to_i != 200 
 	auth_response = Hash[URI.decode_www_form(auth_response.body)]
 
+	redirect to('/failure') if auth_response["oauth_callback_confirmed"] != "true"
 	session[:oauth][:oauth_token] = auth_response["oauth_token"]
         session[:oauth][:oauth_token_secret] = auth_response["oauth_token_secret"]
 
