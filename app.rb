@@ -49,9 +49,7 @@ get '/auth' do
 	session[:oauth] = {} 
 
 	auth_request = Net::HTTP::Post.new(URI("https://api.twitter.com/oauth/request_token"))
-	auth_request["Authorization"] = oauth("POST", "oauth/request_token", oauth_details({
-		:callback => "http://polar-wave-5903.herokuapp.com/auth_callback"
-	}))
+	auth_request["Authorization"] = oauth("POST", "oauth/request_token", oauth_details({:callback => "http://polar-wave-5903.herokuapp.com/auth_callback"}))
 	
 	client = https_client
 	
@@ -81,10 +79,7 @@ get '/auth_callback' do
 
 	auth_request = Net::HTTP.Post.new(URI("https://api.twitter.com/oauth/access_token"))
 	auth_request.body = "oauth_verifier=" + session[:oauth][:oauth_verifier].to_s
-	auth_request["Authorization"] = oauth("POST", "oauth/access_token",oauth_details({
-		:token => session[:oauth][:oauth_token],
-		:token_secret => session[:oauth][:oauth_token_secret]
-	}))
+	auth_request["Authorization"] = oauth("POST", "oauth/access_token",oauth_details({:token => session[:oauth][:oauth_token],:token_secret => session[:oauth][:oauth_token_secret]}))
 	
 	auth_response = client.request(auth_request)
 
