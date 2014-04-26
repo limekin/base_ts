@@ -2,9 +2,9 @@ require 'bundler/setup'
 
 Bundler.require
 
-require 'sinatra'
-require 'simple_oauth'
 require 'net/http'
+require 'json'
+require './lib/custom_twitter'
 require './app'
 
 run Sinatra::Application

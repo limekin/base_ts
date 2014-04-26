@@ -1,7 +1,5 @@
-Welcome to unfavoriter !
-
 <% if @user.nil? %>
 	<a href = "/auth">Authorize</a>
 <% else %>
-	<p> Welcome <%= @user %> </p>
+	<p> Welcome <%= @user["screen_name"] %> </p>
 <% end %>
